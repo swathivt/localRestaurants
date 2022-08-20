@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/swathivt/localRestaurants#readme",
   "dependencies": {
+    "bootstrap": "^5.2.0",
     "mongodb": "^4.9.0"
   }
 }
