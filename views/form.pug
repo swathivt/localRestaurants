@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Registration Form 
+        
+         block styles
+            link(rel="stylesheet" type="text/css" href="/style.css")
+    body 
+    div
+    h1 Create Account
+    form(action = "/registration", method = "POST")
+        label(for = "fname") First Name:
+        input(type="text" id = "fname" name="firstName")
+        label(for="lname") Last Name: 
+        input(type="text" id="lname" name = "lastName") 
+        label(for="email") Email: 
+        input(type="email", id="email" name = "emailAddress") 
+        label(for="password") Password: 
+        input(type="password", id="password" name = "password") 
+
+
+        button(type="submit") Sign Up

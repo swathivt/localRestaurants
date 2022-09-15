@@ -1,0 +1,19 @@
+.home{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    background-color: rgb(54, 152, 244);
+    color: white;
+    padding: 14px 25px;
+    
+}
+.registration, .logIn {
+    color: rgb(237, 237, 232);
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.button {
+    background-color: aquamarine;
+}
