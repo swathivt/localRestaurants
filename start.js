@@ -1,5 +1,6 @@
 const  express = require('express');
 const mongoose123 = require('mongoose');
+const nodemon = require('nodemon');
 mongoose123.connect("mongodb+srv://swathy:Hanuman01@crud1.slqruqm.mongodb.net/?retryWrites=true&w=majority",
 {
   // userNewUrlParser: true,

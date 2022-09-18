@@ -1,19 +1,30 @@
-.home{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    background-color: rgb(54, 152, 244);
-    color: white;
-    padding: 14px 25px;
-    
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: rgb(54, 152, 244);
+  color: white;
+  padding: 14px 25px;
 }
-.registration, .logIn {
-    color: rgb(237, 237, 232);
-    text-align: center;
-    text-decoration: none;
 
+.footer {
+
+  text-align: center;
+  background-color: rgb(54, 152, 244);
+  color: white;
+  margin-top: 30px;
+  padding: 14px 25px;
+}
+
+.registration,
+.logIn,
+.logOut {
+  color: rgb(237, 237, 232);
+  text-align: center;
+  text-decoration: none;
+  padding-left: 30px;
 }
 
 .button {
-    background-color: aquamarine;
+  background-color: aquamarine;
 }

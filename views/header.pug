@@ -1,0 +1,7 @@
+div(class="header")
+        if firstName == null
+            a(href="/registration" class="registration" ) Registration 
+            a(href="/login" class="logIn" ) LogIn
+        else
+            span #{firstName}           
+            a(href="/logout" class="logOut" ) LogOut

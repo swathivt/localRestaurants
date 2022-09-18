@@ -12,7 +12,7 @@ User-Preferences:
     Save filters
 
 Technologies: 
-    Html, Bootstrap, nodeJS, Mongodb
+    HTML, CSS, NodeJS, Mongodb, Express, Express-Session, Cookie Parser, Body_parser
 
  Third pary APIs: 
     Google Restaurants APIs

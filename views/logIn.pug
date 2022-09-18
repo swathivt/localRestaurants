@@ -8,7 +8,10 @@ html(lang="en")
         block styles
             link(rel="stylesheet" type="text/css" href="/style.css")
     body 
+    // ********************************************header***************************************************//
+    include header.pug
 
+    // ********************************************content***************************************************//
     h1 Log In 
     form(action = "/logIn", method = "POST")
         label(for = "email") E-mail:
@@ -17,3 +20,8 @@ html(lang="en")
         input(type="password", id="password" name = "password") 
 
         button(type="submit" class="button") Sign In
+
+    // ********************************************footer***************************************************//
+
+
+    include footer.pug

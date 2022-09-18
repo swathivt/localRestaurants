@@ -3,7 +3,10 @@ const mongoose = require("mongoose");
 const { check, validationResult } = require("express-validator");
 const router = express.Router();
 
-const Registration = mongoose.model('Registration');
+const Registration = mongoose.model("Registration");
+let userDoc = mongoose.model("Registration");
+
+let session;
 
 /******************************************************Home Page*****************************************/
 
@@ -13,7 +16,7 @@ router.get("/", (req, res) => {
 
 /******************************************************Registration Page*****************************************/
 router.get("/registration", (req, res) => {
-  res.render("form");
+  res.render("signUp");
 });
 
 router.post(
@@ -75,19 +78,31 @@ router.post(
     const errors = validationResult(req);
 
     if (errors.isEmpty()) {
-     // const logInModel = new Registration(req.body);
+      // const logInModel = new Registration(req.body);
 
-     Registration
-        .find({ emailAddress: req.body.emailAddress, password:  req.body.password})
-        .then(userDoc => {
-          console.log(userDoc.length);
+      Registration.find({
+        emailAddress: req.body.emailAddress,
+        password: req.body.password,
+      })
+        .then((userDoc) => {
+          console.log(userDoc);
 
-          if(userDoc.length == 1) {
-            console.log('successfully authenticated by ' + req.body.emailAddress);
-              res.render('home');
+          if (userDoc.length == 1) {
+            session = req.session;
+            session.emailAddress = req.body.emailAddress;
+            session.firstName = userDoc[0].firstName;
+            console.log(req.session);
+            console.log(
+              "successfully authenticated by " + req.body.emailAddress
+            );
+
+            res.render("home", {
+              firstName: req.session.firstName,
+              email: req.session.emailAddress
+            });
           } else {
-            console.log('Failed to authenticated by ' + req.body.emailAddress);
-            res.render('login');
+            console.log("Failed to authenticated by " + req.body.emailAddress);
+            res.render("login");
           }
         })
         .catch((err) => {
@@ -100,5 +115,13 @@ router.post(
     }
   }
 );
+
+
+router.get("/logOut", (req, res) => {
+  console.log(JSON.stringify(req.session));
+  req.session.destroy();
+
+  res.redirect("/");
+});
 
 module.exports = router;
