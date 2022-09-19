@@ -15,12 +15,15 @@ let session;
 router.get("/", (req, res) => {
   const client = new Client({});
 
+  
+
+
+
   client
     .elevation({
       params: {
         locations: [{ lat: 50.481104, lng: -122.475586 }],
-        key: "AIzaSyD9RvBHIptwksmmGwzixojAm8FPV9-rVyg",
-      },
+        key: "asdf",
       timeout: 1000, // milliseconds
     })
     .then((r) => {
