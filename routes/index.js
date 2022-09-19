@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { check, validationResult } = require("express-validator");
 const router = express.Router();
+const {Client} = require("@googlemaps/google-maps-services-js");
+
 
 const Registration = mongoose.model("Registration");
 let userDoc = mongoose.model("Registration");
@@ -11,6 +13,23 @@ let session;
 /******************************************************Home Page*****************************************/
 
 router.get("/", (req, res) => {
+  const client = new Client({});
+
+  client
+    .elevation({
+      params: {
+        locations: [{ lat: 50.481104, lng: -122.475586 }],
+        key: "AIzaSyD9RvBHIptwksmmGwzixojAm8FPV9-rVyg",
+      },
+      timeout: 1000, // milliseconds
+    })
+    .then((r) => {
+      console.log(r.data.results[0].elevation);
+    })
+    .catch((e) => {
+      console.log(e.response.data.error_message);
+    });
+
   res.render("home");
 });
 
