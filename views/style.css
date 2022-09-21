@@ -6,6 +6,9 @@
   color: white;
   padding: 14px 25px;
 }
+h1{
+  margin-left: 43px;
+}
 
 .footer {
 
@@ -18,7 +21,8 @@
 
 .registration,
 .logIn,
-.logOut {
+.logOut
+ {
   color: rgb(237, 237, 232);
   text-align: center;
   text-decoration: none;
@@ -28,3 +32,32 @@
 .button {
   background-color: aquamarine;
 }
+.restaurant {
+  
+  text-decoration: none;
+  list-style-type: none;
+  padding-left: 30px;
+  border-bottom: 0.1px solid rgb(144, 143, 143);
+
+  background-color: rgb(248, 243, 243);
+ 
+  padding: 5px;
+  margin: 10px;
+}
+li:hover{
+  color:rgb(237, 237, 232);
+  border-bottom: 0.1px solid lightgrey;
+  background-color:  rgb(224, 184, 184);
+  height: 50px;
+  cursor: pointer;
+}
+.restaurantName{
+  margin-left: 5px;
+  font-size: large;
+}
+
+.restaurantRating{
+  margin-left: 10px;
+}
+
+

@@ -2,38 +2,50 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { check, validationResult } = require("express-validator");
 const router = express.Router();
-const {Client} = require("@googlemaps/google-maps-services-js");
-
+const { Client } = require("@googlemaps/google-maps-services-js");
+const axios = require("axios");
 
 const Registration = mongoose.model("Registration");
 let userDoc = mongoose.model("Registration");
 
 let session;
 
-/******************************************************Home Page*****************************************/
+const apiKey = "asdf"; //New Key
 
-router.get("/", (req, res) => {
-  const client = new Client({});
+async function placesNearByClientLib() {
+  var restaurantData;
 
-  
+  var config = {
+    method: "get",
+    url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&key=" + apiKey  ,
+    headers: {},
+  };
+
+  await axios(config)
+    .then(function (response) {
+      
+      restaurantData = response.data
 
 
-
-  client
-    .elevation({
-      params: {
-        locations: [{ lat: 50.481104, lng: -122.475586 }],
-        key: "asdf",
-      timeout: 1000, // milliseconds
     })
-    .then((r) => {
-      console.log(r.data.results[0].elevation);
-    })
-    .catch((e) => {
-      console.log(e.response.data.error_message);
+    .catch(function (error) {
+      console.log(error);
     });
 
-  res.render("home");
+  return restaurantData;
+}
+
+/******************************************************Home Page*****************************************/
+
+router.get("/", async (req, res) => {
+  var restaurantData = await placesNearByClientLib();
+
+  //console.log(JSON.stringify(restaurantData));
+  
+   res.render("home", {
+    
+     restaurants: restaurantData,
+   });
 });
 
 /******************************************************Registration Page*****************************************/
@@ -120,7 +132,7 @@ router.post(
 
             res.render("home", {
               firstName: req.session.firstName,
-              email: req.session.emailAddress
+              email: req.session.emailAddress,
             });
           } else {
             console.log("Failed to authenticated by " + req.body.emailAddress);
@@ -137,7 +149,6 @@ router.post(
     }
   }
 );
-
 
 router.get("/logOut", (req, res) => {
   console.log(JSON.stringify(req.session));

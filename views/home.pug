@@ -10,7 +10,17 @@ html(lang="en")
     body 
     
     include header.pug
-    h1 Welcome to Mini Project
+    h1 Local Restaurants 
+    
+    ul
+      each restaurant in restaurants.results
+        li.restaurant
+            div.restaurantName= restaurant.name 
+            span.restaurantRating= restaurant.rating 
+            span.restaurantRating= "Rating"
+      else
+        li There are no values
+    
     include footer.pug   
 
     
