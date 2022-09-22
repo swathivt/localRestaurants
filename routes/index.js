@@ -108,9 +108,9 @@ router.post(
     check("password").isLength({ min: 1 }).withMessage("Please enter password"),
   ],
 
-  (req, res) => {
+ async (req, res) => {
     const errors = validationResult(req);
-
+    var restaurantData = await placesNearByClientLib();
     if (errors.isEmpty()) {
       // const logInModel = new Registration(req.body);
 
@@ -129,10 +129,11 @@ router.post(
             console.log(
               "successfully authenticated by " + req.body.emailAddress
             );
-
+            
             res.render("home", {
               firstName: req.session.firstName,
               email: req.session.emailAddress,
+              restaurants: restaurantData,
             });
           } else {
             console.log("Failed to authenticated by " + req.body.emailAddress);

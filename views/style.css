@@ -47,7 +47,7 @@ h1{
 li:hover{
   color:rgb(237, 237, 232);
   border-bottom: 0.1px solid lightgrey;
-  background-color:  rgb(224, 184, 184);
+  background-color:  rgb(237, 105, 105);
   height: 50px;
   cursor: pointer;
 }
@@ -60,4 +60,10 @@ li:hover{
   margin-left: 10px;
 }
 
+a:hover{
+  border-bottom: 0.1px solid lightgrey;
+  color: rgba(206, 59, 14, 0.836);
+  
+  cursor: pointer;
+}
 
